@@ -190,6 +190,7 @@ Execution
 			'io.github.infolis.algorithm.Tokenizer'
 			'io.github.infolis.algorithm.TokenizerOpenNLP'
 			'io.github.infolis.algorithm.TokenizerStanford'
+			'io.github.infolis.algorithm.ReportedSpeechTagger'
 			'org.gesis.git.LODInfrastructure.dataProcessing.importer.AllbusBibImporter'
 			'org.gesis.git.LODInfrastructure.dataProcessing.importer.DbkImporter'
 			'org.gesis.git.LODInfrastructure.dataProcessing.importer.ZisBibtexImporter'
@@ -719,6 +720,10 @@ Entity
 			"project"
 			"institution"
 			"instrument"
+            "person"
+            "organization"
+            "unknown"
+            "claim"
 		]
 	journalTitle
 		@context
@@ -1101,6 +1106,8 @@ EntityLink
 			'unknown'
 			'same_as'
 			'references'
+            'attributed_to'
+            'reports'
 		]
 		index: false
 	tags

@@ -139,6 +139,7 @@ class InfolisWebservice
 			'play/datasetifier'
 			'data-model-explorer'
 			'backend-static'
+			'play/identifySourcesAndClaims'
 			'simple-search'
 		]
 		Async.eachSeries controllers, (controller, done) =>

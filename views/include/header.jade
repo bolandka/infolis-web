@@ -1,80 +1,82 @@
 mixin navbarLeft()
-	ul.nav.navbar-nav
-		li
-			a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
-				| Info
-				span.caret
-			ul.dropdown-menu
-				li
-					a(href='#{site_api}/schema') Schema
-				li
-					a(href="#{site_api}/play/data-model-explorer") Data Model Explorer
-		li.dropdown
-			a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
-				| Work
-				span.caret
-			ul.dropdown-menu
-				li
-					a(href='#{site_api}/play/datasetifier') Datasetifier	
-				li
-					a(href='#{site_api}/api') API
-		li.dropdown
-			a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
-				| Monitor
-				span.caret
-			ul.dropdown-menu
-				//- li
-					//- a(href='#{site_api}/api/ldf') Linked Data Fragments
-				li
-					a(href='#{site_api}/api/stats') Database Stats
-				li
-					a(href='#{site_api}/api/monitor') Execution Monitor
-		li.dropdown
-			a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
-				| Search
-				span.caret
-			ul.dropdown-menu
-				li
-					a(href='#{site_api}/search') Get Linked Entities
+    ul.nav.navbar-nav
+        li
+            a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
+                | Info
+                span.caret
+            ul.dropdown-menu
+                li
+                    a(href='#{site_api}/schema') Schema
+                li
+                    a(href="#{site_api}/play/data-model-explorer") Data Model Explorer
+        li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
+                | Work
+                span.caret
+            ul.dropdown-menu
+                li
+                    a(href='#{site_api}/play/datasetifier') Datasetifier    
+                li
+                    a(href='#{site_api}/play/identifySourcesAndClaims') Sources and Claims  
+                li
+                    a(href='#{site_api}/api') API
+        li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
+                | Monitor
+                span.caret
+            ul.dropdown-menu
+                //- li
+                    //- a(href='#{site_api}/api/ldf') Linked Data Fragments
+                li
+                    a(href='#{site_api}/api/stats') Database Stats
+                li
+                    a(href='#{site_api}/api/monitor') Execution Monitor
+        li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown',role="button",aria-expanded="false",aria-haspopup="true")
+                | Search
+                span.caret
+            ul.dropdown-menu
+                li
+                    a(href='#{site_api}/search') Get Linked Entities
 
 mixin navbarRight()
-	ul.nav.navbar-nav.navbar-right
-		li
-			a(href='#{site_github}/feed.xml', title='Follow RSS feed')
-				i.fa.fa-fw.fa-rss
-		li
-			a(href='https://github.com/infolis/', title='Follow on GitHub')
-				i.fa.fa-fw.fa-github
-		li
-			a(href='https://twitter.com/infolis_project', title='Follow on Twitter')
-				i.fa.fa-fw.fa-twitter
+    ul.nav.navbar-nav.navbar-right
+        li
+            a(href='#{site_github}/feed.xml', title='Follow RSS feed')
+                i.fa.fa-fw.fa-rss
+        li
+            a(href='https://github.com/infolis/', title='Follow on GitHub')
+                i.fa.fa-fw.fa-github
+        li
+            a(href='https://twitter.com/infolis_project', title='Follow on Twitter')
+                i.fa.fa-fw.fa-twitter
 
 nav.navbar.navbar-inverse.navbar-static-top
-	script
-		:coffee-script
-			$ ->
-				path = window.location.pathname
-				if path isnt '/'
-					$('nav li a[href$="' + path + '"]').parents('li').addClass('active')
-				else
-					$('nav li a.home').parents('li').addClass('active')
-			$ ->
-				$(document).on 'keydown', (e) ->
-					if $('#help').hasClass('in')
-						if e.keyCode == 27
-							$('#help-button span').trigger 'click'
-				$("div.row[id!='help']").on 'click', ->
-					if $('#help').hasClass('in')
-							$('#help-button span').trigger 'click'
+    script
+        :coffee-script
+            $ ->
+                path = window.location.pathname
+                if path isnt '/'
+                    $('nav li a[href$="' + path + '"]').parents('li').addClass('active')
+                else
+                    $('nav li a.home').parents('li').addClass('active')
+            $ ->
+                $(document).on 'keydown', (e) ->
+                    if $('#help').hasClass('in')
+                        if e.keyCode == 27
+                            $('#help-button span').trigger 'click'
+                $("div.row[id!='help']").on 'click', ->
+                    if $('#help').hasClass('in')
+                            $('#help-button span').trigger 'click'
 
-	.container-fluid
-		.row
-			.col-md-10.col-md-offset-1
-				.navbar-header
-					button.navbar-toggle.colapsed(type="button",data-toggle="collapse",data-target="#infolis-navbar")
-						span.icon-bar
-						span.icon-bar
-						span.icon-bar
-				#infolis-navbar.navbar-collapse.collapse
-					+ navbarLeft()
-					+ navbarRight()
+    .container-fluid
+        .row
+            .col-md-10.col-md-offset-1
+                .navbar-header
+                    button.navbar-toggle.colapsed(type="button",data-toggle="collapse",data-target="#infolis-navbar")
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                #infolis-navbar.navbar-collapse.collapse
+                    + navbarLeft()
+                    + navbarRight()

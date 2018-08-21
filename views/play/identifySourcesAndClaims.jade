@@ -1,0 +1,47 @@
+extends ../layout.jade
+
+block title
+	| Identify sources and claims in your PDF or TXT files
+
+block help
+	include:markdown ../../help/identifySourcesAndClaims.md
+
+block end-of-head
+	style.
+		.progress-bar,
+		.progress-bar a {
+			color:white !important;
+			font-size: 1em;
+			font-weight-bold;
+		}
+	script
+		include:coffee-script ../../src-client/identifySourcesAndClaims.coffee
+
+block content
+	.row
+		.col-md-10.col-md-offset-1
+			form.form-horizontal(role="form")
+				.form-group
+					label.control-label.col-sm-3(for="file") Choose PDF or TXT files
+					.col-sm-4
+						input.form-control#file(type="file",multiple=true)
+				.form-group
+					label.control-label.col-sm-3(for="upload-tags") Assign tags
+					.col-sm-4
+						input.form-control#upload-tags(type="text",placeholder="Tag")
+				.form-group
+					.col-sm-3.col-sm-offset-3
+						input.form-control.btn.btn-success#start-demo(type="button",value="Analyze")
+	.row.toggleable
+		.col-md-3 Upload Progress
+		.col-md-8#upload-progress
+	.row.toggleable
+		.col-md-3 #[a(href='https://github.com/infolis/infolis-web/wiki/API-calls-to-algorithms#identifySourcesAndClaims') IdentifySourcesAndClaims] Execution
+		.col-md-8#isac-uri
+	.row.toggleable
+		.col-md-3 #[a(href='https://github.com/infolis/infolis-web/wiki/API-calls-to-algorithms#identifySourcesAndClaims') IdentifySourcesAndClaims] Progress
+		.col-md-8#isac-progress
+	.row.toggleable
+		.col-md-3 Generated Publication-Source-Claim Links
+		.col-md-8
+			ul#links
