@@ -295,19 +295,37 @@ class InfolinkClient
  #    opts.execution.searchResultLinkerClass = ['io.github.infolis.algorithm.MultiMatchesLinker']
  #    return @execute opts
 
+ getViewForEntity = (uri) ->
+  Request.get(uri)
+   .set 'Accept', 'application/json'
+   #.then (response) ->
+   # entity = response.body
+   # #console.log(entity)
+   # if entity.entityType is "claim"
+   #  return $("<a>").attr("href", uri).html(entity.name)
+   # else
+   #  #return "<a href=\"" + uri + "\">" + entity.name + "(type: " + entity.entityType + ")</a>"
+   #  return $("<a>").attr("href", uri).html(entity.name + "(type: " + entity.entityType + ")")
+
  createViewForUri : (uri) ->
   await Request.get(uri)
    .set 'Accept', 'application/json'
    .then (response) ->
     entityLink = response.body
     if "attributed_to" in entityLink.entityRelations
-     source = entityLink.fromEntity
-     claim = entityLink.toEntity
-     sentence = entityLink.linkView
-     $("#links").append(
-      $("<li>").append($("<a>").attr("href", uri)
-       .html(sentence))
-       .append("<ul><li>source: \'" + source + "\'</li><li>claim: \'" + claim + "\'</li></ul>"))
+     getViewForEntity(entityLink.toEntity).then (response) ->
+      entity = response.body
+      console.log(entity)
+      source = "<a href=\"" + entityLink.toEntity + "\">" + entity.name + " (type: " + entity.entityType + ")</a>"
+      console.log(source)
+      getViewForEntity(entityLink.fromEntity).then (response) ->
+       entity = response.body
+       claim = "<a href=\"" + entityLink.fromEntity + "\">" + entity.name + "</a>"
+       sentence = entityLink.linkView
+       $("#links").append(
+        $("<li>").append($("<a>").attr("href", uri)
+         .html(sentence))
+         .append("<ul><li>source: \'" + source + "\'</li><li>claim: \'" + claim + "\'</li></ul>"))
 
 exp.Bootstrap = new Bootstrap()
 exp.InfolinkClient = InfolinkClient
