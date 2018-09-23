@@ -316,7 +316,7 @@ class InfolinkClient
      getViewForEntity(entityLink.toEntity).then (response) ->
       entity = response.body
       console.log(entity)
-      source = "<a href=\"" + entityLink.toEntity + "\">" + entity.name + " (type: " + entity.entityType + ")</a>"
+      source = "<a href=\"" + entityLink.toEntity + "\">" + entity.name + " (types: " + entity.entityTypes + ")</a>"
       console.log(source)
       getViewForEntity(entityLink.fromEntity).then (response) ->
        entity = response.body
