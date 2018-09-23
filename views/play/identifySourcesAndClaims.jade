@@ -1,7 +1,7 @@
 extends ../layout.jade
 
 block title
-	| Identify sources and claims in your PDF or TXT files
+	| Identify sources and claims in your TXT files
 
 block help
 	include:markdown ../../help/identifySourcesAndClaims.md
@@ -22,7 +22,7 @@ block content
 		.col-md-10.col-md-offset-1
 			form.form-horizontal(role="form")
 				.form-group
-					label.control-label.col-sm-3(for="file") Choose PDF or TXT files
+					label.control-label.col-sm-3(for="file") Choose TXT files
 					.col-sm-4
 						input.form-control#file(type="file",multiple=true)
 				.form-group
