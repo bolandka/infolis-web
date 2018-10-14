@@ -712,41 +712,11 @@ Entity
 			dc:description "The primary type of entity: e.g. publication, dataset, database, citedData, project, institution or instrument"
 		type String
 		default "publication"
-		enum: [
-			"publication"
-			"dataset"
-			"database"
-			"citedData"
-			"project"
-			"institution"
-			"instrument"
-            "source"
-            "person"
-            "organization"
-            "claim"
-            "cue"
-            "unknown"
-		]
 	entityTypes
 		@context
 			dc:description "All types of an entity: e.g. source and person"
 		type ArrayOfStrings
 		required no
-		enum: [
-			"publication"
-			"dataset"
-			"database"
-			"citedData"
-			"project"
-			"institution"
-			"instrument"
-            "source"
-            "person"
-            "organization"
-            "claim"
-            "cue"
-            "unknown"
-		]
 	journalTitle
 		@context
 			dc:description "bibliographic metadata: journal title"
