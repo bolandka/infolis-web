@@ -633,6 +633,16 @@ Entity
 			dc:description "Name of the entity"
 		type String
 		index: true
+	start
+		@context
+			dc:description "character offset of the beginning of the mention in the source text"
+		type Number
+		index: false
+	end
+		@context
+			dc:description "character offset of the end of the mention in the source text"
+		type Number
+		index: false
 	versionInfo
 		@context
 			dc:description "Version of a datafile"
@@ -712,6 +722,11 @@ Entity
 			dc:description "The primary type of entity: e.g. publication, dataset, database, citedData, project, institution or instrument"
 		type String
 		default "publication"
+	ultraFineTypes
+		@context
+			dc:description "All ultra fine-grained types of an entity: e.g. minister and teacher"
+		type ArrayOfStrings
+		required no
 	entityTypes
 		@context
 			dc:description "All types of an entity: e.g. source and person"
@@ -1003,6 +1018,16 @@ TextualReference
 			dc:description "The term"
 		type: String
 		index: true
+	referenceEnd
+		@context
+			dc:description "character offset of the end of the textual reference in the source text"
+		type Number
+		index: false
+	referenceStart
+		@context
+			dc:description "character offset of the beginning of the textual reference in the source text"
+		type Number
+		index: false
 	textFile
 		@context
 			dc:description "The file this reference came from"
