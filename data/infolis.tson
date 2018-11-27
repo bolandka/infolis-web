@@ -1128,6 +1128,7 @@ EntityLink
             'reports'
             'activity'
             'manner'
+            'contains'
 		]
 		index: false
 	tags
